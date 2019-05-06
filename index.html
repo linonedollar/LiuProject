@@ -14,14 +14,14 @@
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <script type="text/javascript" src="./assets/js/webqr.js"></script>
     <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-24451557-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-24451557-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
     </script>
   </head>
   <body>
@@ -52,16 +52,44 @@
                 </table>
               </td>
             </tr>
-            <tr><td colspan="3" align="center">
+            <tr>
+              <td colspan="3" align="center">
               <img />
-            </td></tr>
-            <tr><td colspan="3" align="center">
-              <div id="result"></div>
-            </td></tr>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" align="center">
+                <div id="result"></div>
+              </td>
+            </tr>
           </table>
         </div>
       </div>
       <canvas id="qr-canvas" width="800" height="600"></canvas>
       <script type="text/javascript">load();</script>
+      <script>
+        $(document).ready(function(){
+            var lesson_all=document.getElementsById("keyword");
+            var target = lesson_all.split("?");
+
+            window.alert(target);
+
+            // $.ajax({
+            //   type: "GET",
+            //   url: "./.php",
+            //   dataType: "json",
+            //   data: {'data':test},
+            //   cache: false,
+            //   success: function(response){
+            //     console.log(response);
+            //     location.reload();                    
+            //   },
+            //   error: function(xhr){
+            //     console.log(xhr);
+            //     location.reload();
+            //   }
+            // });
+        });         
+      </script>
     </body>
   </html>
