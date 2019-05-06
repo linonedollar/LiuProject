@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta name="description" content="QR Code scanner" />
+    <meta name="keywords" content="qrcode,qr code,scanner,barcode,javascript" />
+    <meta name="language" content="English" />
+    <meta name="copyright" content="Lazar Laszlo (c) 2011" />
+    <meta name="Revisit-After" content="1 Days"/>
+    <meta name="robots" content="index, follow"/>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>qrcode測試頁面</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script type="text/javascript" src="./assets/js/llqrcode.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript" src="./assets/js/webqr.js"></script>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-24451557-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div style="position:relative;top:+20px;left:0px;"><g:plusone size="medium"></g:plusone></div>
+        <p id="mp1">
+          請掃描ＱＲＣＯＤＥ課程
+        </p>
+        <ul>
+          <li><a href="index.html">掃描</a></li>
+        </ul>
+      </div>
+      <div id="mainbody">
+        <table class="tsel" border="0" width="100%">
+          <tr>
+            <td valign="top" align="center" width="50%">
+              <table class="tsel" border="0">
+                <tr>
+                  <td><img class="selector" id="webcamimg" src="./assets/imgs/vid.png" onclick="setwebcam()" align="left" /></td>
+                  <td><img class="selector" id="qrimg" src="./assets/imgs/cam.png" onclick="setimg()" align="right"/></td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center">
+                  <div id="outdiv">
+                  </div></td>
+                </tr>
+                </table>
+              </td>
+            </tr>
+            <tr><td colspan="3" align="center">
+              <img />
+            </td></tr>
+            <tr><td colspan="3" align="center">
+              <div id="result"></div>
+            </td></tr>
+          </table>
+        </div>
+      </div>
+      <canvas id="qr-canvas" width="800" height="600"></canvas>
+      <script type="text/javascript">load();</script>
+    </body>
+  </html>
