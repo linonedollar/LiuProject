@@ -1,93 +1,38 @@
-    body{
-    width:100%;
-    text-align:center;
-    }
-    img{
-    border:0;
-    }
-    #main{
-    margin: 15px auto;
-    background:white;
-    overflow: auto;
-      width: 100%;
-    }
-    #header{
-    background:white;
-    margin-bottom:15px;
-    }
-    #mainbody{
-    background: white;
-    width:100%;
-      display:none;
-    }
-    #footer{
-    background:white;
-    }
-    #v{
-    width:320px;
-    height:240px;
-    }
-    #qr-canvas{
-    display:none;
-    }
-    #qrfile{
-    width:320px;
-    height:240px;
-    }
-    #mp1{
-    text-align:center;
-    font-size:35px;
-    }
-    #imghelp{
-    position:relative;
-    left:0px;
-    top:-160px;
-    z-index:100;
-    font:18px arial,sans-serif;
-    background:#f0f0f0;
-      margin-left:35px;
-      margin-right:35px;
-      padding-top:10px;
-      padding-bottom:10px;
-      border-radius:20px;
-    }
-    .selector{
-    margin:0;
-    padding:0;
-    cursor:pointer;
-    margin-bottom:-5px;
-    }
-    #outdiv
-    {
-    width:320px;
-    height:240px;
-      border: solid;
-      border-width: 3px 3px 3px 3px;
-    }
-    #result{
-    border: solid;
-      border-width: 1px 1px 1px 1px;
-      padding:20px;
-      width:70%;
-    }
-    ul{
-    margin-bottom:0;
-    margin-right:40px;
-    }
-    li{
-    display:inline;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-    font-weight: bold;
-    border-right: 1px solid #333333;
-    }
-    li a{
-    text-decoration: none;
-    color: black;
-    }
-    #footer a{
-      color: black;
-    }
-    .tsel{
-    padding:0;
-    }
+body{
+	margin:0;
+	color:#6a6f8c;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+}
+
+/*Login page */
+.loginbg{
+	background:url(http://cdn1.data-service.cloud/site/9b994e58-bb6c-4385-8433-ec2f1bb6e317/uploadimage/1b6f223b-3ffa-4cd7-8e6b-0135abdf5443.jpeg) no-repeat center;
+	height: 100vh;
+	/* background:rgba(40,57,101,.9); */
+}
+.loginbg > .container
+{
+height: 100vh;
+	background:rgba(40,57,101,.9);
+}
+.logo{
+	height:200px;
+	padding:50px;
+}
+button{
+	font-weight: bolder;
+}
+button.line{
+	background: #00c300 !important;
+	color:white;
+}
+button.line:hover{
+	background: rgba(0, 195, 0,0.9) !important;
+	color:white;
+}
+
+/*Home page*/
+.home{
+	padding-top:50px;
+}
