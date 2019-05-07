@@ -6,12 +6,14 @@ var gUM = false;
 var webkit = false;
 var moz = false;
 var v = null;
+
 var imghtml = '<div id="qrfile"><canvas id="out-canvas" width="320" height="240"></canvas>' +
     '<div id="imghelp">拍照或' +
     '<br>上傳檔案' +
     '<input stlye="padding-left:50px;" type="file" onchange="handleFiles(this.files)"/>' +
     '</div>' +
     '</div>';
+
 var vidhtml = '<video playsinline id="v" autoplay></video>';
 
 function dragenter(e) {
@@ -27,6 +29,7 @@ function dragover(e) {
 function drop(e) {
     e.stopPropagation();
     e.preventDefault();
+
     var dt = e.dataTransfer;
     var files = dt.files;
     if (files.length > 0) {
@@ -45,6 +48,7 @@ function handleFiles(f) {
         reader.onload = (function(theFile) {
             return function(e) {
                 gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+
                 qrcode.decode(e.target.result);
             };
         })(f[i]);
@@ -61,6 +65,7 @@ function initCanvas(w, h) {
     gCtx = gCanvas.getContext("2d");
     gCtx.clearRect(0, 0, w, h);
 }
+
 
 function captureToCanvas() {
     if (stype != 1)
@@ -85,12 +90,21 @@ function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function read(a) {
+function read(a) //將讀到的url顯示在id為result的div裡
+{
     var html = "<br>";
-    if (a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
-        html += "<a target='_blank' href='" + a + "'>" + a + "</a><br>";
-    html += "<b>" + htmlEntities(a) + "</b><br><br>";
-    document.getElementById("result").innerHTML = html;
+    // if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
+    //     html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
+    b = htmlEntities(a);
+    ans = b.split('?');
+
+    document.getElementById("keyword").setAttribute("value", ans[1]);
+
+    document.getElementById("keyword").innerHTML = "課程名稱：" + ans[1];
+
+    document.getElementById("result").innerHTML += html;
+
+    print_name();
 }
 
 function isCanvasSupported() {
@@ -99,8 +113,10 @@ function isCanvasSupported() {
 }
 
 function success(stream) {
+
     v.srcObject = stream;
     v.play();
+
     gUM = true;
     setTimeout(captureToCanvas, 500);
 }
@@ -129,33 +145,23 @@ function setwebcam() {
     var options = true;
     if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
         try {
-            navigator.mediaDevices.enumerateDevices().then(function(devices) {
-                devices = devices.filter(function(devices) {
-                    return devices.kind === 'videoinput';
-                });
-                var videoinput_id = '';
-                devices.forEach(function(device) {
-                    if (device.label.toLowerCase().search("back") & gt; - 1) {
-                        videoinput_id = device.deviceId;
-                    }
-                });
-                if (videoinput_id != '') {
-                    navigator.mediaDevices.getUserMedia({
-                        video: {
-                            deviceId: {
-                                'exact': videoinput_id
-                            },
-                            facingMode: 'environment'
+            navigator.mediaDevices.enumerateDevices()
+                .then(function(devices) {
+                    devices.forEach(function(device) {
+                        if (device.kind === 'videoinput') {
+                            if (device.label.toLowerCase().search("back") > -1)
+                                options = {
+                                    'deviceId': {
+                                        'exact': device.deviceId
+                                    },
+                                    'facingMode': 'environment'
+                                };
+                            //使用前置鏡頭
                         }
-                    }).then(successCallback);
-                } else {
-                    navigator.mediaDevices.getUserMedia({
-                        video: {
-                            facingMode: 'environment'
-                        }
-                    }).then(successCallback);
-                }
-            });
+                        console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
+                    });
+                    setwebcam2(options);
+                });
         } catch (e) {
             console.log(e);
         }
@@ -168,7 +174,7 @@ function setwebcam() {
 
 function setwebcam2(options) {
     console.log(options);
-    document.getElementById("result").innerHTML = "- 掃描中 -";
+
     if (stype == 1) {
         setTimeout(captureToCanvas, 500);
         return;
@@ -176,6 +182,8 @@ function setwebcam2(options) {
     var n = navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
+
+
     if (n.mediaDevices.getUserMedia) {
         n.mediaDevices.getUserMedia({
             video: options,
@@ -201,8 +209,10 @@ function setwebcam2(options) {
             audio: false
         }, success, error);
     }
+
     document.getElementById("qrimg").style.opacity = 0.2;
     document.getElementById("webcamimg").style.opacity = 1.0;
+
     stype = 1;
     setTimeout(captureToCanvas, 500);
 }
