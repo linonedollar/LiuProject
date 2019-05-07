@@ -112,7 +112,7 @@ function read(a) //將讀到的url顯示在id為result的div裡
     
     document.getElementById("result").innerHTML += html;
 
-    window.setTimeout("print_name()", 1500);
+    print_name();
 }	
 
 function isCanvasSupported(){
