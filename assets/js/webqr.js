@@ -165,7 +165,7 @@ function setwebcam()
 			  devices.forEach(function(device) {
 				if (device.kind === 'videoinput') {
 				  if(device.label.toLowerCase().search("back") >-1)
-					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'user'} ;
+					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
                 //使用前置鏡頭
 				}
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
