@@ -8,14 +8,14 @@
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <script type="text/javascript" src="./assets/js/webqr.js"></script>
     <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-24451557-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-24451557-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
     </script>
   </head>
   <body>
@@ -46,16 +46,51 @@
                 </table>
               </td>
             </tr>
-            <tr><td colspan="3" align="center">
+            <tr>
+              <td colspan="3" align="center">
               <img />
-            </td></tr>
-            <tr><td colspan="3" align="center">
-              <div id="result"></div>
-            </td></tr>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" align="center">
+                <div id="result">
+                  <p id="keyword" value="abcde">--掃描中--</p>
+                </div>
+              </td>
+            </tr>
           </table>
         </div>
       </div>
       <canvas id="qr-canvas" width="800" height="600"></canvas>
       <script type="text/javascript">load();</script>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Page level plugin JavaScript-->
+      <script src="vendor/datatables/jquery.dataTables.js"></script>
+      <script src="vendor/datatables/dataTables.bootstrap4.js"></script>      
     </body>
+      <script>         
+        function print_name(){
+          ans = document.getElementById("keyword").getAttribute("value");
+          window.alert(ans);
+
+          $.ajax({
+            type: "GET",
+            url: "./test.php",
+            dataType: "json",
+            data: {'data':ans},
+            cache: false,
+            success: function(response){
+              window.alert(response);
+              // location.reload();                    
+            },
+            error: function(xhr){
+              window.alert(xhr);
+              // location.reload();
+            }
+          });          
+        }
+      </script>    
   </html>

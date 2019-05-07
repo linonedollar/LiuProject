@@ -98,13 +98,21 @@ function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function read(a)
+function read(a) //將讀到的url顯示在id為result的div裡
 {
     var html="<br>";
-    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
-        html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b>"+htmlEntities(a)+"</b><br><br>";
-    document.getElementById("result").innerHTML=html;
+    // if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
+    //     html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
+    b = htmlEntities(a);
+    ans = b.split('?');
+
+    document.getElementById("keyword").setAttribute("value",ans[1]);
+
+    document.getElementById("keyword").innerHTML = "課程名稱："+ans[1];
+    
+    document.getElementById("result").innerHTML += html;
+
+    print_name();
 }	
 
 function isCanvasSupported(){
@@ -180,7 +188,7 @@ function setwebcam()
 function setwebcam2(options)
 {
 	console.log(options);
-	document.getElementById("result").innerHTML="- 掃描中 -";
+
     if(stype==1)
     {
         setTimeout(captureToCanvas, 500);    
