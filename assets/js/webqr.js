@@ -158,7 +158,7 @@ function setwebcam() {
                                 };
                             //使用前置鏡頭
                         }
-                        console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
+                        alert(device.kind + ": " + device.label + " id = " + device.deviceId);
                     });
                     setwebcam2(options);
                 });
