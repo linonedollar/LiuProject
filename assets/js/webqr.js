@@ -154,7 +154,7 @@ function setwebcam() {
                                     'deviceId': {
                                         'exact': device.deviceId
                                     },
-                                    'facingMode': 'user'
+                                    'facingMode': 'environment'
                                 };
                             //使用前置鏡頭
                         }
